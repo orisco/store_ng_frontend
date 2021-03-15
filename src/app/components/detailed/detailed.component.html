@@ -1,0 +1,26 @@
+
+  <div class="wrapper">
+        <div class="left">
+          <div class="close" (click)="_product.detailedProductDisplay = false;"> 
+            <i class="fas fa-times"></i>
+          </div>
+        
+        <img [src]="_product.detailedProduct.image">
+        </div>
+        <div class="right">
+          <p class="maker">{{_product.detailedProduct.product_maker}}</p>
+          <p class="name">{{_product.detailedProduct.product_name}}</p>
+          <p class="description">{{_product.detailedProduct.description}}</p>
+          <p class="details">{{_product.detailedProduct.detail || 'no description available'}}</p>
+          <p class="price">$ {{_product.detailedProduct.price}}</p>
+          <div class="add">
+            <div class="add" *ngIf="_auth.registeredUser[0].role != 'admin'">
+              <div class="addToCart" >
+                  <p class="addToCartBtn" *ngIf="_cart.addToCart.id != _product.detailedProduct._id" (click)="_cart.addToCart.isShown = true; _cart.addToCart.id = _product.detailedProduct._id; counter = 1">Add to Cart</p>
+                  <p class="quantity" *ngIf="_cart.addToCart.isShown && _cart.addToCart.id ===  _product.detailedProduct._id"><span class="change" (click)="counter != 0 ? this.counter = this.counter - 1 : _cart.addToCart.id = ''">-</span><span>{{counter}}</span><span class="change" (click)="this.counter = this.counter + 1">+</span><span class="ok" *ngIf="counter != 0" (click)="_cart.addProductToCartFunc( _product.detailedProduct, counter); _product.detailedProductDisplay = false;" ><i class="fas fa-cart-arrow-down"></i></span></p>
+              </div>
+        </div>
+        </div>
+    </div>
+
+

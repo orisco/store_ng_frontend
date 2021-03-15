@@ -1,0 +1,65 @@
+<div class="formBox">
+  <div class="backBtn" [routerLink]="['/sign-up']">
+    <i class="fas fa-arrow-left"></i>
+  </div>
+  <div class="bttm">
+    <div class="upper">
+      <div class="logo">
+    <p>révéler</p>
+    <p class="underneath">REVEAL YOUR TRUE SELF</p>
+</div>
+  <form class="form" [formGroup]="myForm" (ngSubmit)="continueRegistration()">
+
+  
+  <div class="fieldCombo">
+    <div class="field">
+  
+      <input class="input" type="text" placeholder="First Name" formControlName="firstName"> 
+    </div> 
+    <div class="field">
+      <input class="input" type="text" placeholder="Last Name" formControlName="lastName">
+    </div>
+  </div>
+  <div class="field">
+    <div class="control has-icons-left has-icons-right">
+      <input class="input" type="password" placeholder="Password" formControlName="password">
+      <span class="icon is-small is-left">
+        <i class="fas fa-key"></i>
+      </span>
+      <span class="icon is-small is-right" *ngIf="myForm.controls.password.valid">
+        <i class="fas fa-check"></i>
+      </span>
+      <p class="help is-dark" *ngIf="myForm.controls.password.invalid && myForm.controls.password.dirty && myForm.controls.password.untouched">5 characters or more</p>
+    </div>
+  </div>
+  
+  <div class="fieldCombo">
+    <div class="field">
+    <div class="control">
+      <div class="select" >
+        <select name="role" formControlName="city">
+          <option disabled selected value="">City</option>
+          <option>Jerusalem</option>
+          <option>Tel Aviv</option>   
+          <option>Haifa</option>
+          <option>Be'er Sheva</option>
+          <option>Ashdod</option>
+          <option>Rishon Letzion</option>
+          <option>Natanya</option>
+          <option>Petah Tikva</option>
+          <option>Holon</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+      <input class="input" type="text" placeholder="Street" formControlName="street">
+  </div>
+  </div>
+  <div class="btnBox">
+    <button class="btn" type="submit" [disabled]="myForm.invalid"><i class="fas fa-arrow-right"></i></button>
+    </div>
+  </form>
+</div>
+</div>
+

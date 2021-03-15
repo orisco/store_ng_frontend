@@ -1,0 +1,102 @@
+.cover {
+  width: 30vw;
+  height: calc(100vh - 110px);
+  min-height: 500px;
+  min-width: 400px;
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.685);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.301);
+  border: 1px solid rgb(226, 226, 226);
+  position: relative;
+
+  animation: open 1s;
+  @keyframes open {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .cls {
+    color: #4a5759;
+    position: absolute;
+    right: 0px;
+    top: 0;
+    padding: 5px 10px;
+    cursor: pointer;
+    z-index: 2;
+    &:hover {
+      color: #edafb8;
+    }
+  }
+}
+.form {
+  background-color: none !important;
+}
+.admin {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: none !important;
+  width: 100%;
+  height: 70%;
+  border: none;
+  .headline {
+    margin-bottom: 50px;
+    text-align: center;
+    font-weight: 100;
+    font-size: 30px;
+    color: #4a5759;
+  }
+
+  .field {
+    margin: 2.5px;
+    input,
+    select {
+      background-color: rgba(255, 255, 255, 0.267);
+      width: 300px;
+      height: 45px;
+      padding-left: 15px;
+      padding-top: 10px;
+      border: none;
+      box-shadow: none;
+      margin-top: -20px;
+      color: #4a5759;
+      font-weight: 300;
+      z-index: 0;
+
+      &:focus {
+        outline: none !important;
+        box-shadow: 0 0 10px rgba(126, 126, 126, 0.425);
+      }
+      &::placeholder {
+        color: #354f52;
+      }
+    }
+    .label {
+      font-size: 10px !important;
+      letter-spacing: 0.3px;
+      margin: none;
+      padding-left: 9px;
+      color: #000000;
+      z-index: 3;
+      font-weight: 300;
+    }
+  }
+  .btn {
+    margin: 30px;
+    font-weight: 500;
+    color: rgb(44, 44, 44);
+    cursor: pointer;
+    &:hover {
+      color: #edafb8;
+    }
+  }
+  .err {
+    position: absolute;
+    bottom: 10px;
+  }
+}

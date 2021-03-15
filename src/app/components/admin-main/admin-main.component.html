@@ -1,0 +1,56 @@
+<div class="cover">
+  <div class="cls" (click)="_cart.isCartOpen = false">
+    <i class="fas fa-times"></i>
+  </div>
+  <form class="admin">
+    <p *ngIf="_ad.edit" class="headline">Edit Product</p>
+    <p *ngIf="!_ad.edit" class="headline">Add a New Product</p>
+  
+    <div class="field">
+      <label class="label">Product Maker</label>
+        <input #product_maker class="input" type="text" 
+        [value]="_ad.edit ? _ad.adminProduct.product_maker : ''" (keyup)="_ad.saveChanges = false"> 
+        </div> 
+        <div class="field">
+          <label class="label">Product Name</label>
+          <input #product_name class="input" type="text" [value]="_ad.edit ? _ad.adminProduct.product_name : ''" (keyup)="_ad.saveChanges = false"> 
+        </div>
+        <div class="field">
+          <label class="label">Product Description</label> 
+          <input #description class="input" type="text" [value]="_ad.edit ? _ad.adminProduct.description: ''" (keyup)="_ad.saveChanges = false"> 
+        </div>
+        <div class="field">
+          <label class="label">Product Detail</label> 
+          <input #detail class="input" type="text" [value]="_ad.edit ? _ad.adminProduct.detail: ''" (keyup)="_ad.saveChanges = false">  
+        </div>
+        <div class="field">
+          <label class="label">Product Price</label> 
+          <input #price class="input" type="text" [value]="_ad.edit ? _ad.adminProduct.price : ''" (keyup)="_ad.saveChanges = false"> 
+        </div>
+        <div class="field">
+          <label class="label">Product Image</label> 
+          <input #image class="input" type="text" [value]="_ad.edit ? _ad.adminProduct.image: 'assets/img/products/'" (keyup)="_ad.saveChanges = false">  
+        </div>
+        <div class="field">
+        
+        <div class="select">
+          <label class="label">Product Category</label> 
+        <select #categoryId name="category" (change)="_ad.saveChanges = false">
+          <option [value]="category._id" *ngFor="let category of _product.categories">{{category.category_name}}</option>
+        </select>
+      </div>
+      
+      </div>
+        <p *ngIf="_ad.edit && _ad.saveChanges === false" class="btn" (click)="editProduct(product_maker, product_name, description, detail, categoryId, price, image);" 
+        >Save Changes</p>
+    
+        <p *ngIf="_ad.edit && _ad.saveChanges === true" class="btn">Saved</p>
+        <p *ngIf="_ad.error" class="err">You must fill in all the fields</p>
+
+
+
+
+        <p *ngIf="!_ad.edit && _ad.saveChanges === false" class="btn" (click)="addProduct(product_maker, product_name, description, detail, categoryId, price, image)">Add Product</p>
+        <p *ngIf="!_ad.edit && _ad.saveChanges === true" class="btn">Added</p>
+        </form>
+        </div>

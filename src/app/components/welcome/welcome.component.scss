@@ -1,0 +1,138 @@
+.bttm {
+  background: #edafb885;
+  animation: fade 3s;
+  @keyframes fade {
+    0% {
+      background: #f7e9e3da;
+    }
+    100% {
+      background: #edafb885;
+    }
+  }
+}
+.upper {
+  display: flex;
+  justify-content: center;
+}
+.form {
+  margin: 0;
+  height: 550px !important;
+  width: 500px !important;
+  padding: 30px;
+  animation: open 1s;
+  box-shadow: 0 0 10px rgba(126, 126, 126, 0.425);
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.795);
+  @keyframes open {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+.headers {
+  text-align: left;
+  color: #4a5759;
+  .head1 {
+    font-family: "Rubik", sans-serif;
+    font-size: 25px;
+    font-weight: 200;
+    color: #b0c4b1;
+  }
+  .head2 {
+    padding-top: 30px;
+    font-size: 17px;
+    font-weight: 400;
+  }
+  .head3 {
+    padding: 10px 0;
+    font-size: 17px;
+  }
+}
+
+.currentCart {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #4a5759;
+  .fa-shopping-basket {
+    font-size: 20px;
+    animation: transform 1s;
+  @keyframes transform {
+    0% {
+      transform: rotate(20deg);
+      transform: scale(1.9);
+    }
+    20% {
+      transform: rotate(-20deg);
+    }
+    40% {
+      transform: rotate(20deg);
+    }
+    60% {
+      transform: rotate(-20deg);
+    }
+    80% {
+      transform: rotate(20deg);
+      transform: scale(1.3);
+
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+    &:hover {
+      transform: scale(1.5);
+  }
+  }
+  &:hover {
+    .cartInfo {
+      opacity: 1;
+      // color: #4a5759;
+    }
+  }
+}
+.click {
+  font-family: "Rubik", sans-serif;
+  padding: 100px 0 0 0;
+  text-align: left;
+  color: #cb8589;
+  font-weight: 200;
+  font-size: 22px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  &:hover {
+    color: #edafb8;
+  }
+}
+.small {
+  font-size: 15px;
+  color: rgb(56, 56, 56);
+  font-weight: 300;
+}
+
+.cartInfo {
+  width: 200px;
+  height: 80px;
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.87);
+  padding: 10px;
+  position: absolute;
+  top: 0px;
+  opacity: 0;
+  left: 50px;
+  font-size: 14px;
+  .view {
+    font-weight: 500;
+    cursor: pointer;
+    &:hover {
+      color: #b0c4b1;
+    }
+  }
+  .total {
+    font-weight: 500;
+    font-size: 15px;
+  }
+}

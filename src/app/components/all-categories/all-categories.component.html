@@ -1,0 +1,42 @@
+<div class="mainPage">
+  <div class="products">
+    <p *ngIf="_product.allProducts && _product.allProducts.length === 0" class="alert">No Products Match</p>
+      <div class="product" *ngFor="let product of _product.allProducts">
+        <div *ngIf="_auth.registeredUser[0].role === 'admin'" class="adminBtn" (click)="deleteProduct(product)"><i class="fas fa-times" ></i></div>
+        <div class="product-image" (click)="_product.detailedProduct = product; _product.detailedProductDisplay = true;">
+          <img [src]="product.image">
+        </div>
+        <div class="product-btm">
+          <div class="product-info" (click)="_product.detailedProduct = product; _product.detailedProductDisplay = true;">
+            <div class="maker">
+              <p>{{product.product_maker}}</p>
+            </div>
+            <div class="name">
+              <p>{{product.product_name}}</p>
+            </div>
+            <div class="description">
+              <p>{{product.description}}</p>
+            </div>
+          </div>
+          <div class="price">
+            <p>${{product.price}}</p>
+          </div>
+        </div>
+        
+          <div class="add">
+            <div class="addToCart" *ngIf="_auth.registeredUser[0].role === 'user'">
+                <p class="addToCartBtn" *ngIf="_cart.addToCart.id != product._id" (click)="_cart.addToCart.isShown = true; _cart.addToCart.id = product._id; counter = 1">Add to Cart</p>
+                <p class="quantity" 
+                *ngIf="_cart.addToCart.isShown && _cart.addToCart.id === product._id"><span class="change" (click)="counter != 0 ? this.counter = this.counter - 1 : _cart.addToCart.id = ''">-</span><span>{{counter}}</span><span class="change" (click)="this.counter = this.counter + 1">+</span><span class="ok" *ngIf="counter != 0" (click)="_cart.addProductToCartFunc(product, counter)"><i class="fas fa-cart-arrow-down"></i></span></p>
+            </div>
+            <div class="addToCart" (click)="_admin.sendProductToAdminPanel(product); _admin.saveChanges = false;" *ngIf="_auth.registeredUser[0].role === 'admin'">
+                <i class="fas fa-edit adminEdit"></i>
+            </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <div class="detail" *ngIf="_product.detailedProductDisplay">
+    <app-detailed></app-detailed>
+  </div>

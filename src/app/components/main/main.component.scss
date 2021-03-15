@@ -1,0 +1,46 @@
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  // background-image: url("/assets/2628824.jpg");
+  // background-size: cover;
+  // background-repeat: no-repeat;
+}
+
+.mainPage {
+  display: flex;
+  flex-direction: row;
+  background: rgba(245, 245, 245, 0.945);
+  animation: fadeback 3s;
+  @keyframes fadeback {
+    0% {
+      background: #edafb885;
+    }
+    100% {
+      background: rgba(245, 245, 245, 0.945);
+    }
+  }
+}
+
+.categories {
+  position: fixed;
+  right: 5px;
+  top: 105px;
+  min-width: 200px;
+}
+
+.cartOpen {
+  position: fixed;
+  right: 5px;
+  top: 105px;
+  min-width: 400px;
+}
+
+.checkout {
+  position: absolute;
+  height: calc(100vh - 85px);
+  width: 100vw;
+  top: 85px;
+  left: 0;
+}

@@ -1,0 +1,56 @@
+<div class="sideOptions">
+  <div class="close" (click)="_product.byCategory = false">
+    <i class="fas fa-times"></i>
+  </div>
+  
+  <div class="categories">
+    <p class="catTitle">Categories</p>
+    <div class="options">
+    <p class="option" (click)="_product.getProducts()">Show all</p>
+    <p class="option" *ngFor="let cat of _product.categories" (click)="_product.getProductsByCategory(cat._id)">{{cat.category_name}}</p>
+  </div>
+</div>
+  <div class="sort">
+    <p class="catTitle">Products by price</p>
+    <form class="price" [formGroup]="myForm">
+      <div>
+        <input type="radio" 
+        name="price" formControlName="price" value="0,10"
+        (change)="getProductsByPrice()">
+        <label for="price"> $ 0-10</label>
+      </div>
+    <div>
+      <input type="radio" 
+      name="price" formControlName="price" value="11,20"
+      (change)="getProductsByPrice()">
+      <label for="price"> $ 11-20</label>
+    </div>
+    <div>
+      <input type="radio" 
+      name="price" formControlName="price" value="21,40"
+      (change)="getProductsByPrice()">
+      <label for="price"> $ 21-40</label>
+    </div>
+    <div>
+      <input type="radio" 
+      name="price" formControlName="price" value="41,60"
+      (change)="getProductsByPrice()">
+      <label for="price"> $ 41-60</label>
+    </div>
+    <div>
+      <input type="radio" 
+      name="price" formControlName="price" value="61,1000"
+      (change)="getProductsByPrice()">
+      <label for="price"> $ 61+</label>
+    </div>
+  </form>
+  
+    
+  </div>
+  <div class="categories">
+    <p class="catTitle">Products by brands</p>
+    <div class="options">
+    <p class="option" *ngFor="let brand of _product.brands" (click)="getProductsByBrand(brand)">{{brand}}</p>
+  </div>
+  </div>
+</div>

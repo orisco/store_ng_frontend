@@ -1,0 +1,53 @@
+<div class="formBox">
+  <div class="backBtn" *ngIf="_auth.showForm" (click)="_auth.showForm = false">
+    <i class="fas fa-arrow-left"></i>
+  </div>
+  
+  <div class="bttm">
+    <div class="upper">
+      <div class="logo">
+    <p>révéler</p>
+    <p class="underneath">REVEAL YOUR TRUE BEAUTY</p>
+</div>
+  <form *ngIf="_auth.showForm === true" class="form" [formGroup]="myForm" (ngSubmit)="login()">
+  <div class="field">
+    <div class="control has-icons-left has-icons-right">
+      <input class="input" 
+      [ngClass]="{'is-success': myForm.controls.email.valid, 'is-danger': myForm.controls.email.invalid && myForm.controls.email.dirty}" type="email" placeholder="example@domain.com" formControlName="email">
+      <span class="icon is-left is-dark">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right" *ngIf="myForm.controls.email.invalid && myForm.controls.email.dirty">
+        <i class="fas fa-exclamation-triangle" ></i>
+      </span>
+      <p class="help" *ngIf="myForm.controls.email.errors?.email">This email is invalid</p>
+    </div>
+    
+  </div>
+  <div class="field">
+    <div class="control has-icons-left has-icons-right">
+      <input class="input" 
+      [ngClass]="{'is-success': myForm.controls.password.valid, 'is-danger': myForm.controls.password.invalid && myForm.controls.password.dirty}"
+      type="password" placeholder="enter your password" formControlName="password">
+      <span class="icon is-small is-left">
+        <i class="fas fa-key"></i>
+      </span>
+      <span class="icon is-small is-right" *ngIf="myForm.controls.password.valid">
+        <i class="fas fa-check"></i>
+      </span>
+      <p class="help" *ngIf="myForm.controls.password.errors?.minlength">Id must be 5 characters</p>
+    </div>
+  </div>
+  
+  
+  <div class="btnBox">
+      <button class="btn" type="submit" [disabled]="myForm.invalid"><i class="fas fa-arrow-right"></i></button>
+  </div>
+  <p class="check" *ngIf="err">Looks like you don't have an account yet.<br><button type="reset" class="errBtn" (click)="this.err = false;">Try again</button> or <a [routerLink]="['/sign-up']">Sign-up</a></p>
+  </form>
+<div class="form" *ngIf="!_auth.showForm">
+  <h1><span (click)="_auth.showForm = true;">SIGN IN</span> | <span [routerLink]="['/sign-up']">SIGN UP</span></h1>
+</div>
+</div>
+</div>
+  </div>

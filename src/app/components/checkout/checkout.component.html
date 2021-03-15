@@ -1,0 +1,140 @@
+<div class="formBox">
+<div class="wrapper">
+<div #cart [ngClass]="_ck.cartSummary ? 'boxWrap' : 'boxWrap invisible'">
+  <div class="summary">
+  <p>Order Summary</p>
+  <p class="smaller">In order to change order, return to <span class="bold" (click)="backToCart()">cart</span></p>
+</div>
+<div class="searchInput" (keyup)="_ck.searchCart($event)">
+  <input type="text" placeholder="Search">
+  <i class="fas fa-search btn"></i>
+</div>
+  <div class="cartProducts"> 
+    
+  <div class="cart-item" *ngFor="let item of _ck.checkout._cartItem">
+    <div class="products">
+    <p [innerHTML]="item._productId[0].product_maker | personName: _ck.searchWord"></p>
+    <p [innerHTML]="item._productId[0].product_name | personName: _ck.searchWord"></p>
+  </div>
+    <p>$ {{item._productId[0].price}}</p>
+    <p>Q: {{item.quantity}}</p>
+  </div>
+</div>
+  <div class="cartBottom">
+      <div class="bttnsBox">
+        <div class="bttns" (click)="_ck.cartSummary ? backToCart() : ''">
+          <i  class="fas fa-chevron-left icn"></i>
+            <p>Back to Cart</p>
+        </div>
+        <p class="total">Total: $ {{_ck.checkout.finalPrice}}</p>
+      <div class="bttns" (click)="_ck.cartSummary ? switchToAddressTab(address) : ''">
+        <i  class="fas fa-chevron-right icn"></i>
+        <p>Continue</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div #address [ngClass]="_ck.address ? 'boxWrap' : 'boxWrap invisible'">
+  <div class="summary">
+    <p>Shipping Info</p>
+    <p class="smaller">Address & Payment Information</p>
+  </div>
+  <div *ngIf="_ck.checkout.customerId[0]" class="personalInfo">
+    <!-- <div class="name">
+      <p class="smaller left">Deliver To:</p>
+      <p>{{_ck.checkout.customerId[0].firstName | titlecase}} {{_ck.checkout.customerId[0].lastName | titlecase}}</p>
+    </div> -->
+    <div class="address">
+      <p class="bigger left">Shipping Address:</p>
+      <div class="checkInput">
+        <input type="checkbox" class="check" (change)="getInfo();">
+        <label for="check">same as profile address</label>
+      </div>
+    <div *ngIf="sameInfo" class="physicalAddress">
+      <p>Deliver to: {{_ck.checkout.customerId[0].firstName | titlecase}} {{_ck.checkout.customerId[0].lastName | titlecase}}</p>
+      <p>City: {{_ck.checkout.customerId[0].city}}</p>
+      <p>Street: {{_ck.checkout.customerId[0].street | titlecase}}</p>
+      <p *ngIf="!addressSaved" class="smaller bold btn" (click)="addressSaved = true">Save</p>
+      <p *ngIf="addressSaved" class="smaller bold btn">Address Saved <i class="fas fa-check"></i></p>
+    </div>
+    <div *ngIf="!sameInfo" class="physicalAddress">
+      <p>Deliver to: {{_ck.checkout.customerId[0].firstName | titlecase}} {{_ck.checkout.customerId[0].lastName | titlecase}}</p>
+      <p>City: <select #city (change)="addressSaved = false">
+        <option>Select City</option>
+        <option>Jerusalem</option>
+        <option>Tel Aviv</option>   
+        <option>Haifa</option>
+        <option>Be'er Sheva</option>
+        <option>Ashdod</option>
+        <option>Rishon Letzion</option>
+        <option>Natanya</option>
+        <option>Petah Tikva</option>
+        <option>Holon</option>
+      </select> </p>
+      <p>Street: <input #street type="text" placeholder="Type here"></p>
+      <p *ngIf="!addressSaved" class="smaller bold btn" (click)="sendInfo(street, city)">Save</p>
+      <p *ngIf="addressSaved" class="smaller bold btn">Address Saved <i class="fas fa-check"></i></p>
+    </div>
+    </div>
+    
+    <div *ngIf="cc != 1" [ngClass]="addressSaved ? 'cc' : 'cc dim'">
+        <p class="bigger left">Payment information:</p>
+        <p>Credit card number: </p>
+        <input #creditCard type="text" value="****************" (change)="is_creditCard(creditCard.value)">
+        <p class="bold btn" (click)="is_creditCard(creditCard.value)" *ngIf="cc === 0">Add card</p>
+        
+        <p class="bigger btn" *ngIf="cc === 2">Card error, <span (click)="is_creditCard(creditCard.value)" class=" bold">try again</span></p>
+      </div>
+      <div class="center" *ngIf="cc === 1">
+        <p class="smaller btn">Card ending in {{this._ck.checkout.credit_card}}</p>
+        <p class="smaller bold btn">Payment Saved <i class="fas fa-check"></i></p>
+        
+      </div>
+      
+   
+  </div>
+  <div class="cartBottom">
+    <div class="bttnsBox">
+      <div class="bttns" (click)="_ck.cartSummary = true; _ck.address = false; cart.scrollIntoView({behavior: 'smooth', block: 'end'})">
+        <i  class="fas fa-chevron-left icn"></i>
+          <p>Summary</p>
+      </div>
+    <div class="bttns" [ngClass]="this.cc === 1 ? '' : 'dim'" (click)="_ck.address ? switchToDateTab(date) : '' ">
+      <i  class="fas fa-chevron-right icn"></i>
+      <p>Shipping Date</p>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div #date [ngClass]="_ck.date ? 'boxWrap' : 'boxWrap invisible'">
+  <div class="summary">
+    <p>Shipping Date</p>
+    <p class="smaller">Select Date</p>
+  </div>
+  <div class="datePicker">
+  <mat-form-field class="example-full-width" appearance="fill" >
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" (dateChange)="checkDates($event)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  
+  </div>
+  <div class="cartBottom">
+    <div *ngIf="selected">
+      <p class="totalorder" (click)="postCheckoutSummary(); this.selected = false;">Complete Order</p>
+    </div>
+</div>
+</div>
+  <div class="popup" *ngIf="processed" >
+    <i class="fas fa-check"></i>
+    <p>Your order was processed successfully!</p>
+    <p (click)="getSummary()" download="receipt.txt" class="bold bigger">Download Receipt</p>
+    <div>
+    
+    <p class="bold bigger" (click)="backToMain()">Return</p>
+  </div>
+  </div>
+</div>
+</div>

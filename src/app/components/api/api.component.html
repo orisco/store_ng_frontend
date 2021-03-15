@@ -1,0 +1,317 @@
+<div class="wrapper">
+  <div class="column">
+  <div class="row">
+    <h1>the store API</h1>
+  </div> 
+    <div class="row userGroup">
+      <p>all registered users</p>
+    </div> 
+
+  <div class="row">
+   <div class="description"><p>Description</p></div>
+   <div class="method"><p>Method</p></div>
+   <div class="request"><p>Request</p></div>
+  </div>
+<div class="row">
+    <div class="description"><p>Login</p></div>
+    <div class="method"><p>Post</p>
+      <p>/auth/login</p></div>
+    <div class="request">
+      <p><span>Request:</span> &#123; email: "", password: "" &#125;</p>
+      <p><span>Response:</span> &#123; user object, refresh token, access token &#125;</p>
+    </div>
+   </div> 
+   <div class="row">
+    <div class="description"><p>Register User</p></div>
+    <div class="method"><p>Post</p>
+      <p>/auth/register</p></div>
+    <div class="request">
+      <p><span>Request:</span> &#123; firstName: “”, lastName: “”, email: “”, password: “”, city: “”, street: “” &#125;</p>
+      <p><span>Response:</span> &#123; user object, refresh token, access token &#125;</p>
+    </div>
+   </div> 
+   <div class="row">
+    <div class="description"><p>Refresh Token</p></div>
+    <div class="method"><p>Get</p>
+      <p>/auth/refresh</p></div>
+    <div class="request">
+      <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+      <p><span>Response:</span> &#123; ‘access-token’: accessToken &#125;</p>
+    </div>
+   </div> 
+   <div class="row">
+    <div class="description"><p>Get Categories</p></div>
+    <div class="method"><p>Get</p>
+      <p>/product/categories</p></div>
+    <div class="request">
+      <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+      <p><span>Response:</span> [ &#123; _id: “”
+        category_name: “”
+         &#125; ]</p>
+    </div>
+   </div> 
+   <div class="row">
+    <div class="description"><p>Get Products Count</p></div>
+    <div class="method"><p>Get</p>
+      <p>/product/count</p></div>
+    <div class="request">
+      <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+      <p><span>Response:</span> number of products</p>
+    </div>
+   </div> 
+   <div class="row">
+    <div class="description"><p>Get All Products</p></div>
+    <div class="method"><p>Get</p>
+      <p>/product/products</p></div>
+    <div class="request">
+      <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+      <p><span>Response:</span> [ &#123; _id: “”, product_maker: “”, product_name: “”, description: “”, detail: “”, categoryId: “”, price: number, image: “”
+         &#125; ]</p>
+    </div>
+   </div> 
+   <div class="row">
+    <div class="description"><p>Product Search</p></div>
+    <div class="method"><p>Get</p>
+      <p>/product/products/search</p></div>
+    <div class="request">
+      <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+      <p><span>Request Body:</span> &#123; ‘value’: value
+       #125;</p>
+      <p><span>Response:</span> [ &#123; _id: “”, product_maker: “”, product_name: “”, description: “”, detail: “”, categoryId: “”, price: number, image: “”
+         &#125; ]</p>
+    </div>
+   </div> 
+   <div class="row">
+    <div class="description"><p>Products by Category</div>
+    <div class="method"><p>Get</p>
+      <p>/product/products/:categoryId</p></div>
+    <div class="request">
+      <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+      <p><span>Response:</span> [ &#123; _id: “”, product_maker: “”, product_name: “”, description: “”, detail: “”, categoryId: “”, price: number, image: “”
+         &#125; ]</p>
+    </div>
+   </div> 
+   <div class="row">
+    <div class="description"><p>Products by Price</div>
+    <div class="method"><p>Post</p>
+      <p>/product/products/price-sort
+      </p></div>
+    <div class="request">
+      <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+      <p><span>Request Body:</span> &#123; ‘gt’: greater than value
+        ‘lt’: lower than value
+        </p>
+      <p><span>Response:</span> [ &#123; _id: “”, product_maker: “”, product_name: “”, description: “”, detail: “”, categoryId: “”, price: number, image: “”
+         &#125; ]</p>
+    </div>
+   </div> 
+   <div class="row">
+    <div class="description"><p>Get Brand List</p></div>
+    <div class="method"><p>Get</p>
+      <p>/product/brand</p></div>
+    <div class="request">
+      <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+      <p><span>Response:</span> [ brand names ]</p>
+    </div>
+   </div> 
+
+   <div class="row">
+    <div class="description"><p>Get Products by Brand Name</p></div>
+    <div class="method"><p>Get</p>
+      <p>/product/brand/:brand</p></div>
+    <div class="request">
+      <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+      <p><span>Response:</span> [ &#123; _id: “”, product_maker: “”, product_name: “”, description: “”, detail: “”, categoryId: “”, price: number, image: “”
+        &#125; ]</p>
+    </div>
+   </div>
+   
+   <div class="row">
+    <div class="description"><p>Get Order Count</p></div>
+    <div class="method"><p>Get</p>
+      <p>/checkout/count</p></div>
+    <div class="request">
+      <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+      <p><span>Response:</span> number of orders</p>
+    </div>
+   </div>
+
+   <div class="row">
+    <div class="description"><p>Add a New Order</p></div>
+    <div class="method"><p>Get</p>
+      <p>/checkout/checkout-summary</p></div>
+    <div class="request">
+      <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+      <p><span>Response:</span> [ &#123; _id: “”, customerId: “”, _cartId “”, _cartItem: “”, finalPrice: “”, delivery_date: “”, order_date: “”, credit_card: “” &#125; ]</p>
+    </div>
+   </div>
+
+   <div class="row">
+    <div class="description"><p>Get Blocked Dates (If more than 3)</p></div>
+    <div class="method"><p>Get</p>
+      <p>/checkout/dates
+      </p></div>
+    <div class="request">
+      <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+      <p><span>Response:</span> [ blocked dates ]</p>
+    </div>
+   </div>
+
+   <div class="row">
+    <div class="description"><p>Get Receipt</p></div>
+    <div class="method"><p>Get</p>
+      <p>/checkout/:checkoutId
+      </p></div>
+    <div class="request">
+      <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+      <p><span>Response:</span> text file</p>
+    </div>
+   </div>
+
+   <div class="row">
+    <div class="description"><p>Get Current User's Cart</p></div>
+    <div class="method"><p>Get</p>
+      <p>/cart/
+      </p></div>
+    <div class="request">
+      <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+      <p><span>Response:</span> _id: “”, date: “”, description: “new cart”, userId: “”
+      </p>
+    </div>
+   </div>
+
+   <div class="row">
+    <div class="description"><p>Delete Cart</p></div>
+    <div class="method"><p>Get</p>
+      <p>/cart/:cartId</p></div>
+    <div class="request">
+      <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+    </div>
+   </div>
+
+   <div class="row">
+    <div class="description"><p>Get Cart Items</p></div>
+    <div class="method"><p>Get</p>
+      <p>/cart/:cartId</p></div>
+    <div class="request">
+      <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+
+      <p><span>Response:</span> [ &#123; _id: “”, quantity: “”, _cartId: “”, _productId: [ &#123;
+        _id: “”, product_maker: “”, product_name: “”, description: “”, price: number, image: “"&#125; ] &#125; ]</p>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="description"><p>Update Cart Items</p></div>
+      <div class="method"><p>Post</p>
+        <p>/cart/update/:cartId</p></div>
+      <div class="request">
+        <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+        <p><span>Request Body:</span> [ &#123; _productId: “”, quantity: “”, 
+          _cartId: “”          
+          &#125; ]
+          </p>
+          <p><span>Response:</span> &#123; _id:””,
+            _productId: “”, quantity: “”, 
+            _cartId: “”
+            &#125;
+          </p>
+      </div>
+     </div>
+   
+
+     <div class="row">
+      <div class="description"><p>Update Quantity of Product in Cart</p></div>
+      <div class="method"><p>Put</p>
+        <p>/cart/update/:id</p></div>
+      <div class="request">
+        <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+        <p><span>Request Body:</span> &#123; quantity: number         
+          &#125;
+          </p>
+      </div>
+     </div>
+
+     <div class="row">
+      <div class="description"><p>Delete Individual Products from Cart</p></div>
+      <div class="method"><p>Delete</p>
+        <p>/cart/all/:cartId</p></div>
+      <div class="request">
+        <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+      </div>
+     </div>
+      <div class="row userGroup">
+        <p>Admin Only</p>
+      </div> 
+
+      <div class="row">
+        <div class="description"><p>Add Categories</p></div>
+        <div class="method"><p>Post</p>
+          <p>/product/categories</p></div>
+        <div class="request">
+          <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+          <p><span>Response:</span> [ &#123; _id: “”
+            category_name: “”            
+            &#125; ]
+          </p>
+        </div>
+       </div>
+
+       <div class="row">
+        <div class="description"><p>Delete Categories</p></div>
+        <div class="method"><p>Delete</p>
+          <p>/product/categories/:categoryId
+          </p></div>
+        <div class="request">
+          <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+          <p><span>Request Body:</span>  &#123; categoryId: ""        
+            &#125; 
+            </p>
+          <p><span>Response:</span> [ &#123; _id: “”
+            category_name: “”            
+            &#125; ]
+          </p>
+        </div>
+       </div>
+
+
+       <div class="row">
+        <div class="description"><p>Add a New Product</p></div>
+        <div class="method"><p>Post</p>
+          <p>/product/products/new
+          </p></div>
+        <div class="request">
+          <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+          <p><span>Response:</span> [ &#123; _id: “”, product_maker: “”, product_name: “”, description: “”, detail: “”, categoryId: “”, price: number, image: ""
+            &#125; ]
+          </p>
+        </div>
+       </div>
+
+       <div class="row">
+        <div class="description"><p>Update a Product</p></div>
+        <div class="method"><p>Put</p>
+          <p>/product/products/:productId
+          </p></div>
+        <div class="request">
+          <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+          <p><span>Request Body:</span>  &#123; _id: “”, product_maker: “”, product_name: “”, description: “”, detail: “”, categoryId: “”, price: number, image: “” 
+            &#125; 
+            </p>
+          <p><span>Response:</span> [ &#123; _id: “”, product_maker: “”, product_name: “”, description: “”, detail: “”, categoryId: “”, price: number, image: ""
+            &#125; ]
+          </p>
+        </div>
+       </div>
+
+       <div class="row">
+        <div class="description"><p>Delete a Product</p></div>
+        <div class="method"><p>Post</p>
+          <p>/product/products/:productId
+          </p></div>
+        <div class="request">
+          <p><span>Request Headers:</span> &#123; _id: userId, refreshToken: refreshToken &#125;</p>
+        </div>
+       </div>
+</div>
+</div>

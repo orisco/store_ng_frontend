@@ -1,0 +1,33 @@
+<div class="formBox">
+  <div class="bttm">
+    <div class="upper">
+    <div class="form">
+          <div class="currentCart" *ngIf="_auth.registeredUser[0] && _auth.registeredUser[0].role == 'user'">
+          <p *ngIf="_cart.totalAmount > 0"> <i class="fas fa-shopping-basket"></i> </p><div class="cartInfo">
+            
+            <p class="total">total: ${{_cart.totalAmount}}</p>
+            <p>created: {{_cart.openCart && _cart.openCart.date | date: 'short'}}</p>
+            <p class="view" (click)="_rt.navigateByUrl('/main/allcategories'); _cart.isCartOpen = true;">View Cart</p>
+          </div>
+          </div>
+          
+          
+          <div class="headers">
+          <p class="head1">Welcome to révéler, beautiful {{_auth.registeredUser[0] && _auth.registeredUser[0].firstName | titlecase}}</p>
+          <p class="head2">Our mission is to help you uncover your most beautiful self.</p>  
+          <p class="head3">We share the latest research, knowledge and practices that will effectively help you reach your skin goals.</p>
+          <p class="head3">We promote effective, science-based, active-ingredient products that are produced sustainably using organic and regenerative methods that are beneficial for your skin and the environment.</p>
+
+          <div class="btns" *ngIf="_auth.registeredUser[0] && _auth.registeredUser[0].role === 'user'">
+            <p class="click" (click)="_rt.navigateByUrl('/main/allcategories'); this._ck.cartSummary = true;" *ngIf="_cart.cartItems && _cart.cartItems.length > 0">Continue Shopping</p>
+            <p class="click" (click)="_rt.navigateByUrl('/main/allcategories'); this._ck.cartSummary = true;" *ngIf="_cart.cartItems && _cart.cartItems.length == 0">View Products</p>
+            <p class="small">{{totalProduct}} products are available | {{orderCount}} orders were shipped</p>
+          </div>
+          <div *ngIf="_auth.registeredUser[0] && _auth.registeredUser[0].role === 'admin'">
+            <p class="click" (click)="_rt.navigateByUrl('/main/allcategories');" >Manage Store</p>
+            <p class="small">{{totalProduct}} products are available | {{orderCount}} orders were shipped</p>
+          </div>
+          </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <app-navbar></app-navbar> 
+  <div class="mainPage">
+      <router-outlet></router-outlet>
+      <div *ngIf="_products.byCategory" class="categories">
+        <app-by-categories></app-by-categories>
+      </div>
+<div *ngIf="_cart.isCartOpen && _auth.registeredUser[0].role === 'user'" class="cartOpen">
+  <app-cart></app-cart>
+</div>
+<div *ngIf="_cart.isCartOpen && _auth.registeredUser[0].role === 'admin'" class="cartOpen">
+  <app-admin-main></app-admin-main>
+</div>
+</div>
+</div>

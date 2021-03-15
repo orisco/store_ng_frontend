@@ -1,0 +1,40 @@
+.wrapper {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.945);
+  display: flex;
+  flex-direction: column;
+}
+.column {
+  // background-color: green;
+  display: flex;
+  flex-direction: column;
+}
+.userGroup {
+  font-size: 20px;
+}
+.row {
+  border: 1px solid rgb(231, 231, 231);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 5px;
+  h1 {
+    font-size: 30px;
+  }
+  
+  .description {
+    width: 20%;
+    padding-left: 5px;
+  }
+  .method {
+    padding-left: 5px;
+    width: 30%;
+  }
+  .request {
+    width: 50%;
+    span {
+      font-weight: 500;
+    }
+  }
+}

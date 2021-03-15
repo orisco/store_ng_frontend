@@ -1,0 +1,51 @@
+<div class="cartContainer">
+  <div class="cls" (click)="_cart.isCartOpen = false">
+    <i class="fas fa-times"></i>
+  </div>
+  <div class="products">
+    <p class="empty" *ngIf="_cart.cartItems && _cart.cartItems.length == 0">Your cart is empty</p>
+    <div class="product" *ngFor="let item of _cart.cartItems">
+      <div class="close" (click)="deleteOneItemFromCart(item)"><i class="btn fas fa-times is-pulled-right"></i></div>
+      <div class="productImage">
+        <img src={{item._productId[0].image}}>
+      </div>
+      <div class="quality">
+        <p class="bolder">{{item._productId[0].product_maker}}</p>
+        <p>{{item._productId[0].product_name}}</p>
+      </div>
+      <div class="quantity">
+        <div class="price">
+          <p><span>$ </span>{{item._productId[0].price}}</p>
+        </div>
+        <div class="amount">
+          <p class="btn" (click)="changeQuantity(item, 'decrease')">-</p><p >{{item.quantity}}</p>
+          <p class="btn" (click)="changeQuantity(item, 'increase')">+</p>
+        </div>  
+      </div>
+    </div>
+  </div>
+  
+  <div class="cartFooter">
+    <p class="total">Total: $ <span>{{_cart.totalAmount}}</span></p>
+    <div class="bttnsBox" *ngIf="_cart.cartItems && _cart.cartItems.length > 0">
+      <div class="bttns" *ngIf="!_cart.savedChanges" (click)="updateAllCart()">
+          <i class="fas fa-download icn"></i>
+          <p>Save Changes</p>
+      </div>
+      <div *ngIf="_cart.savedChanges" class="success">
+        <i class="fas fa-check icn successful"></i>
+        <p class="successful">Saved</p>
+    </div>
+      <div class="bttns" (click)="deleteCart()">
+        <i class="fas fa-trash icn"></i>
+        <p>Discard Cart</p>
+      </div>
+      <div class="bttns" (click)="checkout()">
+        <i class="fas fa-credit-card icn"></i>
+        <p >Checkout</p>
+      </div>
+      
+    </div>
+    <p class="stats">Cart created at: {{_cart.openCart.date | date: 'short'}}</p>
+  </div>
+</div>

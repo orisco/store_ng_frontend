@@ -1,0 +1,89 @@
+.sideOptions {
+  width: 15vw;
+  height: calc(100vh - 110px);
+  // background-color: #dedbd2a6;
+  padding: 20px 20px;
+  // overflow-y: scroll;
+  color: #4a5759;
+  position: relative;
+  border: 1px solid rgb(231, 231, 231);
+  margin-left: 1px;
+  backdrop-filter: blur(5px);
+  min-height: 500px;
+  min-width: 200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.301);
+  animation: open 1s;
+
+  @keyframes open {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .categories {
+    height: 30%;
+  }
+  .options {
+    height: 90%;
+    overflow: scroll;
+  }
+  .close {
+    color: #4a5759;
+    position: fixed;
+    right: 0px;
+    top: 0;
+    padding: 5px 10px;
+    cursor: pointer;
+    z-index: 2;
+    &:hover {
+      color: white;
+    }
+  }
+  .catTitle {
+    height: 30px;
+    width: 100%;
+    font-weight: 500;
+    margin-top: 15px;
+  }
+  .option {
+    align-self: center;
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+    padding-left: 10px;
+    font-weight: 300;
+    color: #4a5759;
+    border: 1px solid transparent;
+    cursor: pointer;
+    p {
+      padding-top: 45%;
+    }
+    &:hover {
+      background-color: white;
+      border: 1px solid rgb(231, 231, 231);
+      color: #4a5759;
+    }
+  }
+  .price {
+    display: flex;
+    flex-direction: column;
+    font-weight: 300;
+    font-size: 14px;
+    justify-content: flex-start;
+    cursor: pointer;
+    div {
+      height: 30px;
+      padding-left: 10px;
+      line-height: 35px;
+      border: 1px solid transparent;
+      &:hover {
+        background-color: white;
+      border: 1px solid rgb(231, 231, 231);
+      color: #4a5759;
+      }
+    }
+  }
+  
+}

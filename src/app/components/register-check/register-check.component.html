@@ -1,0 +1,57 @@
+<div class="formBox">
+  <div class="backBtn" [routerLink]="['/sign-in']">
+    <i class="fas fa-arrow-left"></i>
+  </div>
+  <div class="bttm">
+    <div class="upper">
+      <div class="logo" >
+    <p>révéler</p>
+    <p class="underneath">REVEAL YOUR TRUE BEAUTY</p>
+</div>
+<form class="form" [formGroup]="myForm" (ngSubmit)="beginRegistration()">
+
+<div class="field">
+  <div class="control has-icons-left has-icons-right">
+    <input class="input" 
+    [ngClass]="{'is-success': myForm.controls._id.valid, 'is-danger': myForm.controls._id.invalid && myForm.controls._id.dirty}"
+    type="text" placeholder="Enter your ID number" formControlName="_id">
+    <span class="icon is-small is-left">
+      <i class="fas fa-user"></i>
+    </span>
+    <span class="icon is-small is-right" *ngIf="myForm.controls._id.valid && idValidate !== this.myForm.controls._id.value">
+      <i class="fas fa-check"></i>
+    </span>
+    <p class="help" *ngIf="myForm.controls._id.errors?.minlength">Id must be 8 numbers</p>
+    <p class="help" *ngIf="idValidate === this.myForm.controls._id.value">ID already registered. <span [routerLink]="['/sign-in']">Please log in.</span></p>
+  </div>
+</div>
+
+
+<div class="field">
+  <div class="control has-icons-left has-icons-right">
+    <input class="input" 
+    [ngClass]="{'is-success': myForm.controls.email.valid, 'is-danger': myForm.controls.email.invalid && myForm.controls.email.dirty}" type="email" placeholder="example@domain.com" formControlName="email">
+    <span class="icon is-small is-left">
+      <i class="fas fa-envelope"></i>
+    </span>
+    <span class="icon is-small is-right" *ngIf="myForm.controls.email.invalid && myForm.controls.email.dirty">
+      <i class="fas fa-exclamation-triangle" ></i>
+    </span>
+    <p class="help" *ngIf="myForm.controls.email.errors?.email">This email is invalid</p>
+  <p class="help" *ngIf="emailValidate === this.myForm.controls.email.value">email already registered. <span [routerLink]="['/sign-in']">Please log in.</span></p>
+  </div>
+  
+</div>
+
+
+  
+
+
+
+  <div class="btnBox">
+    <button class="btn" [disabled]="myForm.invalid"><i class="fas fa-arrow-right"></i></button>
+    
+  </div>
+</form>
+</div>
+</div>

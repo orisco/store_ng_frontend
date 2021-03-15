@@ -1,0 +1,272 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bulma/bulma.sass";
+@import url("http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600|Nunito:200,300,400,600,700|Rubik:300,500");
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+html,
+body {
+  font-family: "Nunito", sans-serif !important;
+  font-weight: 200;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./assets/2628824.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.formBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+
+  .backBtn {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 25px;
+    color: #4a5759;
+    cursor: pointer;
+    &:hover {
+      color: white;
+    }
+  }
+}
+.bttm {
+  background: #f7e9e3da;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.upper {
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-end;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 500px;
+  height: 100%;
+}
+.form {
+  width: 320px;
+  height: 260px;
+  position: relative;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  animation: open 2s;
+  @keyframes open {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  h1 {
+    font-family: "Nunito", sans-serif !important;
+    font-size: 20px;
+    font-weight: 500;
+    color: #4a5759;
+    letter-spacing: 1px;
+    text-align: center;
+    cursor: pointer;
+    span {
+      &:hover {
+        color: white;
+      }
+    }
+  }
+  .field {
+    margin-bottom: 5px;
+    width: 80%;
+    .icon {
+      color: rgb(95, 95, 95);
+    }
+  }
+  .help {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    top: 32px;
+    font-size: 11px;
+    color: rgb(114, 0, 0);
+    font-weight: 600;
+    animation: open 1s;
+    @keyframes open {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    span {
+      cursor: pointer;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+  .fieldCombo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+  }
+  input,
+  select {
+    font-family: "Nunito", sans-serif !important;
+    text-align: center;
+    background-color: transparent;
+    color: black;
+    box-shadow: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 200;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    &::placeholder {
+      color: #000000;
+      font-weight: 100;
+      letter-spacing: 1px;
+    }
+    &:focus {
+      border: none;
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.445);
+    }
+  }
+  select {
+    width: 100%;
+  }
+  .check {
+    color: rgb(0, 0, 0);
+    font-weight: 300;
+    font-size: 13px;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+  }
+  .btn {
+    background: none;
+    font-size: 35px;
+    border: none;
+    color: #4a5759;
+    cursor: pointer;
+    &:hover {
+      color: white;
+    }
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+  .btnBox {
+    align-self: center;
+  }
+  a {
+    color: #edafb8;
+    font-weight: 400;
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+.highlight {
+  background-color: rgb(208, 255, 0);
+}
+
+.logo {
+  margin-top: 30%;
+  display: flex;
+  flex-direction: column;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  font-size: 90px;
+  text-align: center;
+  color: #4a5759;
+  .underneath {
+    margin-top: -25px;
+    font-size: 20px;
+    font-weight: 200;
+    letter-spacing: 1px;
+  }
+}
+
+.errBtn {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+  color: #edafb8;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 400;
+  &:focus {
+    outline: none;
+    border: none;
+  }
+  &:hover {
+    color: white;
+  }
+}
+
+.add {
+  width: 100%;
+  height: 25px;
+  margin: -40px 0;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  .addToCart {
+    opacity: 0;
+    font-size: 15px;
+    width: 100%;
+    padding: 2px;
+    font-weight: 300;
+    text-align: right;
+  }
+
+  .addToCartBtn {
+    cursor: pointer;
+    color: #4a5759;
+    &:hover {
+      color: #edafb8;
+    }
+    .fa-cart-arrow-down {
+      padding: 2px;
+      font-size: 25px;
+    }
+  }
+
+  .quantity {
+    color: #4a5759;
+    font-weight: 600;
+    .change {
+      padding: 5px;
+      cursor: pointer;
+      &:hover {
+        color: #edafb8;
+        transform: scale(1.5);
+      }
+    }
+    .ok {
+      font-size: 15px;
+      &:hover {
+        color: #edafb8;
+        font-size: 15px;
+      }
+    }
+  }
+}

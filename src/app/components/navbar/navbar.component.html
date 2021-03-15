@@ -1,0 +1,51 @@
+<div class="navbar_custom">
+    
+  <div class="brand">
+    <p>révéler</p>
+    <p class="motto">reveal your true beauty</p>
+    </div>
+<div class="btns">
+  <div class="searchInput" *ngIf="_product.search" (mouseleave)="_product.search = false" (keyup)="searching($event.target.value)">
+    <input type="text" placeholder="Search for products, brands">
+    </div>
+
+    <div class="searchBtn" (click)="_product.search = true">
+      <i class="fas fa-search btn"></i>
+      </div>
+
+      <div class="adminBtn" (click)="adminAddNewProduct(); _admin.saveChanges = false; _admin.error = false;"
+      *ngIf="_auth.registeredUser[0] && _auth.registeredUser[0].role === 'admin'">
+      <i class="fas fa-plus-circle btn"></i>
+      </div>
+
+    <div class="sortBtn"(click)="_product.byCategory ? _product.byCategory = false : _product.byCategory = true; _cart.isCartOpen = false; _auth.userInfoMenu = false;">
+      <i class="fas fa-sliders-h"></i>
+      </div>
+
+      
+      
+    <div class="cartBtn" 
+    *ngIf="_auth.registeredUser[0] && _auth.registeredUser[0].role === 'user'"
+    (click)="_cart.isCartOpen = true; _auth.userInfoMenu = false">
+      <i *ngIf="!checkout" class="fas fa-shopping-basket"></i>
+    </div>
+    <div class="userBtn" (click)="_cart.isCartOpen = false; _product.byCategory = false; _auth.userInfoMenu = true" >
+      <i class="fas fa-user-circle" ></i>
+    </div>
+  </div>
+  </div>
+
+    <div *ngIf="_auth.userInfoMenu && _auth.registeredUser" class="user-info">
+      <div class="closeButton">
+        <p (click)="_auth.userInfoMenu = false" ><i class="fas fa-times"></i></p>
+    </div>
+
+    <div class="profileInfo">
+      <p>{{_auth.registeredUser[0].firstName| titlecase}} {{_auth.registeredUser[0].lastName| titlecase}} </p>
+      <p>{{_auth.registeredUser[0].email}}</p>
+      <p>{{_auth.registeredUser[0]._id}}</p>
+      <span class="buttons">
+        <p class="btn" (click)="logout()">Logout</p>
+      </span>
+    </div>
+</div>
